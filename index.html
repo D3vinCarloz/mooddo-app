@@ -4,31 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoodDo Deadlines</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>MoodDo Deadlines</h1>
-        <div class="mood-display" id="mood-emoji">😌</div>
+    <div class="container" id="app-container">
+        <div class="header">
+            <h1>MoodDo Deadlines</h1>
+            <div class="mood-display">
+                <h2 id="mood-text">Add a task to set the mood</h2>
+            </div>
+        </div>
 
-        <div class="task-input">
-            <input type="text" id="task-name" placeholder="Enter a new task...">
-            <input type="datetime-local" id="task-deadline">
+        <div class="task-input-area">
+            <input type="text" id="task-name" placeholder="What's the next task?">
+            <input type="text" id="task-deadline-picker" placeholder="Select a deadline...">
             <button id="add-task-btn">Add Task</button>
         </div>
 
-        <ul id="task-list"></ul>
+        <ul id="task-list">
+            </ul>
 
-        <div class="recommendation">
+        <div class="legend-box">
+            <div class="legend-item"><span class="swatch chill"></span>Plenty of Time (&gt; 48 hrs)</div>
+            <div class="legend-item"><span class="swatch paced"></span>Time to Focus (24-48 hrs)</div>
+            <div class="legend-item"><span class="swatch panic"></span>Deadline Panic! (&lt; 24 hrs)</div>
+        </div>
+
+        <div class="recommendation-area">
+            <h3>Recommended Vibe</h3>
             <p class="quote" id="quote-text">"The secret of getting ahead is getting started."</p>
             <div id="spotify-recommendation">
-                <p>Your recommended playlist will appear here.</p>
+                <p>Your playlist will appear here.</p>
             </div>
         </div>
     </div>
 
     <script src="config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="script.js" defer></script>
 </body>
 </html>

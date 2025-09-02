@@ -1,77 +1,61 @@
-body { 
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
-    background-color: #f0f2f5; 
-    color: #333; 
-    margin: 0; 
-    padding: 20px; 
+/* All previous styles remain the same... */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+:root {
+    --bg-color: #1a1a2e; --card-color: #2a2a4a; --text-color: #e0e0e0; --text-muted: #a0a0c0; --primary-color: #4a4af4; --primary-hover: #6a6aff; --border-color: #3a3a5a; --shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Mood Colors */
+    --chill-color: #2dd4bf;  /* Teal */
+    --paced-color: #facc15;  /* Yellow */
+    --panic-color: #f472b6;  /* Pink */
 }
-.container { 
-    max-width: 600px; 
-    margin: auto; 
-    background: white; 
-    padding: 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+body { font-family: 'Poppins', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 20px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 700px; margin: auto; background: var(--card-color); padding: 30px; border-radius: 16px; box-shadow: var(--shadow); border-top: 5px solid var(--primary-color); transition: border-top-color 0.5s ease; }
+.header { text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 20px; }
+h1 { margin: 0; font-size: 2rem; color: #ffffff; }
+.mood-display { margin-top: 10px; min-height: 2rem; }
+#mood-text { margin: 0; font-size: 1.2rem; font-weight: 600; color: var(--text-muted); transition: color 0.5s ease; }
+.task-input-area { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+input[type="text"] { flex-grow: 1; padding: 12px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); border-radius: 8px; font-size: 1rem; }
+input[type="text"]::placeholder { color: var(--text-muted); }
+button { padding: 12px 20px; border: none; background-color: var(--primary-color); color: white; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: background-color 0.2s ease; }
+button:hover { background-color: var(--primary-hover); }
+ul { list-style-type: none; padding: 0; }
+li.task-item { background: var(--bg-color); padding: 15px; border-left: 4px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; transition: box-shadow 0.2s ease, border-left-color 0.5s ease; }
+.task-details span { display: block; }
+.task-details .task-name { font-weight: 600; color: #ffffff; }
+.task-details .task-due { font-size: 0.85rem; color: var(--text-muted); }
+.task-due.overdue { color: var(--panic-color); font-weight: 600; }
+.delete-btn { background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.5rem; padding: 5px; transition: color 0.2s ease; }
+.delete-btn:hover { color: var(--panic-color); }
+
+/* **NEW** Styles for the Legend Box */
+.legend-box {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
 }
-h1 { 
-    text-align: center; 
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
 }
-.mood-display { 
-    text-align: center; 
-    font-size: 5rem; 
-    margin-bottom: 20px; 
+.swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
 }
-.task-input { 
-    display: flex; 
-    gap: 10px; 
-    margin-bottom: 20px; 
-}
-input[type="text"], input[type="datetime-local"] { 
-    flex-grow: 1; 
-    padding: 10px; 
-    border: 1px solid #ddd; 
-    border-radius: 4px; 
-}
-button { 
-    padding: 10px 15px; 
-    border: none; 
-    background-color: #007bff; 
-    color: white; 
-    border-radius: 4px; 
-    cursor: pointer; 
-}
-button:hover { 
-    background-color: #0056b3; 
-}
-ul { 
-    list-style-type: none; 
-    padding: 0; 
-}
-li { 
-    background: #fafafa; 
-    padding: 10px; 
-    border: 1px solid #eee; 
-    border-radius: 4px; 
-    margin-bottom: 10px; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-.delete-btn { 
-    background-color: #dc3545; 
-}
-.delete-btn:hover { 
-    background-color: #c82333; 
-}
-.recommendation { 
-    text-align: center; 
-    margin-top: 20px; 
-}
-.quote { 
-    font-style: italic; 
-    color: #555; 
-    margin-bottom: 15px; 
-}
-#spotify-widget { 
-    border-radius: 12px; 
-}
+.swatch.chill { background-color: var(--chill-color); }
+.swatch.paced { background-color: var(--paced-color); }
+.swatch.panic { background-color: var(--panic-color); }
+
+.recommendation-area { text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
+.quote { font-style: italic; color: var(--text-muted); margin: 10px 0 20px; max-width: 80%; margin-left: auto; margin-right: auto; }
