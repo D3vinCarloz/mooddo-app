@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodDo Deadlines</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>MoodDo Deadlines</h1>
+        <div class="mood-display" id="mood-emoji">😌</div>
+
+        <div class="task-input">
+            <input type="text" id="task-name" placeholder="Enter a new task...">
+            <input type="datetime-local" id="task-deadline">
+            <button id="add-task-btn">Add Task</button>
+        </div>
+
+        <ul id="task-list"></ul>
+
+        <div class="recommendation">
+            <p class="quote" id="quote-text">"The secret of getting ahead is getting started."</p>
+            <div id="spotify-recommendation">
+                <p>Your recommended playlist will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
